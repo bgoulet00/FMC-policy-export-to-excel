@@ -141,28 +141,29 @@ def outputToExcel(filename, columns, policyRules):
             ws.cell(row=row, column=1).fill = darkGray
             ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=13)
             ws.cell(row=row, column=1).value = separator
-        elif rule['category'] != current_category and rule['category'] != '--Undefined--':
+            row = row + 1
+        if rule['category'] != current_category and rule['category'] != '--Undefined--':
             current_category = rule['category']
             separator = 'Category ' + current_category
             ws.cell(row=row, column=1).fill = lightGray
             ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=13)
             ws.cell(row=row, column=1).value = separator
-        else:
-            for i in range(len(columns)):
-                ws.cell(row=row, column=i+1).alignment = Alignment(wrapText=True)
-            ws.cell(row=row, column=1, value=rule['name'])
-            ws.cell(row=row, column=2, value=rule['enabled'])
-            ws.cell(row=row, column=3, value=rule['sourceZones'])
-            ws.cell(row=row, column=4, value=rule['destinationZones'])
-            ws.cell(row=row, column=5, value=rule['sourceNetworks'])
-            ws.cell(row=row, column=6, value=rule['destinationNetworks'])
-            ws.cell(row=row, column=7, value=rule['vlanTags'])
-            ws.cell(row=row, column=8, value=rule['applications'])
-            ws.cell(row=row, column=9, value=rule['sourcePorts'])
-            ws.cell(row=row, column=10, value=rule['destinationPorts'])
-            ws.cell(row=row, column=11, value=rule['urls'])
-            ws.cell(row=row, column=12, value=rule['action'])
-            ws.cell(row=row, column=13, value=rule['comments'])
+            row = row + 1
+        for i in range(len(columns)):
+            ws.cell(row=row, column=i+1).alignment = Alignment(wrapText=True)
+        ws.cell(row=row, column=1, value=rule['name'])
+        ws.cell(row=row, column=2, value=rule['enabled'])
+        ws.cell(row=row, column=3, value=rule['sourceZones'])
+        ws.cell(row=row, column=4, value=rule['destinationZones'])
+        ws.cell(row=row, column=5, value=rule['sourceNetworks'])
+        ws.cell(row=row, column=6, value=rule['destinationNetworks'])
+        ws.cell(row=row, column=7, value=rule['vlanTags'])
+        ws.cell(row=row, column=8, value=rule['applications'])
+        ws.cell(row=row, column=9, value=rule['sourcePorts'])
+        ws.cell(row=row, column=10, value=rule['destinationPorts'])
+        ws.cell(row=row, column=11, value=rule['urls'])
+        ws.cell(row=row, column=12, value=rule['action'])
+        ws.cell(row=row, column=13, value=rule['comments'])
         row = row + 1 
 
     # format column width to length of longest value plus padding
