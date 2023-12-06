@@ -17,3 +17,5 @@ Developed and tested with the following environment
   - FMC queries are limited to 1000 results. paging to support greater than 1000 has not been implemented
 - Caveats: sometimes rules are added incorectly in FMC and appear to be part of a category when they are actually
    'Undefined'.  this script will ignore those anomolies in an attempt to replicate the layout of the FMC GUI
+
+2023-12-06 Fixed bug with section/category headings in outputToExcel()
